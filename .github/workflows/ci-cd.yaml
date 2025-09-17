@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - Wisecow App
+name: CI/CD Pipeline - Wisecow App 
 
 on:
   push:
