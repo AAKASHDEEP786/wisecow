@@ -4,10 +4,10 @@ metadata:
   name: wisecow-service
   namespace: wisecow
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: wisecow
   ports:
     - protocol: TCP
-      port: 4499         # Service port
-      targetPort: 4499   # Container port
+      port: 80         # External port
+      targetPort: 4499 # Container port 
