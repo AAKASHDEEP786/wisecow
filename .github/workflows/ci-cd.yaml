@@ -32,14 +32,26 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # OPTIONAL: for real clusters (like cloud k8s)
-      # for Minikube, usually manual deployment is required
+      # 1️⃣ Configure AWS credentials
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1   # change region if needed
+
+      # 2️⃣ Install kubectl
       - name: Set up Kubectl
         uses: azure/setup-kubectl@v4
         with:
           version: 'latest'
 
+      # 3️⃣ Update kubeconfig for EKS
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name wisecow-eks-cluster
+
+      # 4️⃣ Deploy to EKS
       - name: Deploy to Kubernetes
         run: |
-          kubectl apply -f K8s/deployment.yaml
-          kubectl apply -f K8s/service.yaml
+          kubectl apply -f K8s/deployment.yaml -n wisecow
+          kubectl apply -f K8s/service.yaml -n wisecow
