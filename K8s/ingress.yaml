@@ -11,7 +11,7 @@ metadata:
     alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
   rules:
-    - host: wisecow.yourdomain.com
+    - host: wisecow.devopshackarena.xyz
       http:
         paths:
           - path: /
