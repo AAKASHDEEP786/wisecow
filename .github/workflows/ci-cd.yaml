@@ -24,14 +24,14 @@ jobs:
       - name: Push Docker Image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/wisecow-app:latest
 
-  deploy:   # 👈 ये job भी jobs के अंदर same level पर है
+  deploy:   
     runs-on: ubuntu-latest
     needs: build-and-push
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # 1️⃣ Configure AWS credentials
+      #Configure AWS credentials
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -39,21 +39,21 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      # 2️⃣ Install kubectl
+      #Install kubectl
       - name: Set up Kubectl
         uses: azure/setup-kubectl@v4
         with:
           version: 'latest'
 
-      # 3️⃣ Update kubeconfig for EKS
+      #Update kubeconfig for EKS
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name wisecow-cluster --region ap-south-1
 
-      # 🔹 Create namespace if not exists
+      #Create namespace if not exists
       - name: Create namespace wisecow
         run: kubectl create namespace wisecow --dry-run=client -o yaml | kubectl apply -f -
 
-      # 4️⃣ Deploy to EKS
+      #Deploy to EKS
       - name: Deploy to Kubernetes
         run: |
           kubectl apply -f K8s/deployment.yaml -n wisecow
