@@ -48,7 +48,7 @@ jobs:
 
       # 3️⃣ Update kubeconfig for EKS
       - name: Update kubeconfig
-        run: aws eks update-kubeconfig --name wisecow-eks-cluster
+        run: aws eks update-kubeconfig --name wisecow-cluster
 
       # 4️⃣ Deploy to EKS
       - name: Deploy to Kubernetes
