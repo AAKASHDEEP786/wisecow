@@ -3,7 +3,6 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Add /usr/games to PATH so fortune command is found
 ENV PATH="/usr/games:${PATH}"
 
 # Install required packages 
