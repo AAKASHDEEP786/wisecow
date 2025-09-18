@@ -87,9 +87,9 @@ Access the application via NodePort/Ingress as configured.
 
 • Build → Builds the Docker image
 
-• Push → Pushes image to Docker Hub/GHCR
+• Push → Pushes image to Docker Hub
 
-• Deploy → Applies Kubernetes manifests to the cluster (optional)
+• Deploy → Applies Kubernetes manifests to the cluster 
 
 This ensures the app is continuously deployed whenever changes are pushed to the main branch.
 
