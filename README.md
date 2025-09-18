@@ -52,6 +52,8 @@ sudo apt install fortune-mod cowsay -y
 ```
 Access the app on default port 4499.
 
+---
+
 🐳 Dockerization  
 
 **Build the Docker image**
@@ -63,6 +65,8 @@ docker build -t aakashdevops/wisecow:latest .
 ```bash
 docker run -d -p 4499:4499 aakashdevops/wisecow:latest
 ```
+---
+
 ☸️ Kubernetes Deployment
 ### Deploy all manifests
 ```bash
@@ -75,6 +79,8 @@ kubectl get svc
 ```
 Access the application via NodePort/Ingress as configured.
 
+---
+
 🔄 CI/CD Pipeline (GitHub Actions)
 
 ### The CI/CD workflow (.github/workflows/ci-cd.yaml) automates:
@@ -86,6 +92,8 @@ Access the application via NodePort/Ingress as configured.
 • Deploy → Applies Kubernetes manifests to the cluster (optional)
 
 This ensures the app is continuously deployed whenever changes are pushed to the main branch.
+
+---
 
 🔒 TLS Implementation
 
@@ -104,6 +112,8 @@ This ensures the app is continuously deployed whenever changes are pushed to the
 • CI/CD Workflow → GitHub Actions automation
 
 • TLS Config → Ingress with HTTPS support
+
+---
 
 📜 License
 
