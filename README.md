@@ -59,11 +59,11 @@ Access the app on default port 4499.
 **Build the Docker image**
 
 ```bash
-docker build -t aakashdevops/wisecow:latest .
+docker build -t aakashdevops/wisecow-app:latest .
 ```
 ### Run the container
 ```bash
-docker run -d -p 4499:4499 aakashdevops/wisecow:latest
+docker run -d -p 4499:4499 aakashdevops/wisecow-app:latest
 ```
 ---
 
