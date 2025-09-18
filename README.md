@@ -103,6 +103,8 @@ This ensures the app is continuously deployed whenever changes are pushed to the
 
 • Application accessible securely at https://wisecow.devopshackarena.xyz
 
+---
+
 ✅ Expected Artifacts
 
 • Dockerfile → Containerizes the Wisecow app
