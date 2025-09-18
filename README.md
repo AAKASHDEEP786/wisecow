@@ -7,16 +7,19 @@ As a challenge goal, the application is also secured with **TLS** using Kubernet
 
 ---
 
-## 🗂 Project Structure
-├── wisecow.sh # Application script
-├── Dockerfile # Dockerfile to containerize the app
-├── K8s/
-│ ├── deployment.yaml # Kubernetes Deployment
-│ ├── service.yaml # Kubernetes Service
-│ └── ingress.yaml # Ingress with TLS configuration
-└.github/
-    └── workflows/
+## 📂 Project Structure
+
+```text
+├── wisecow.sh          # Application script  
+├── Dockerfile          # Dockerfile to containerize the app  
+├── K8s/  
+│   ├── deployment.yaml # Kubernetes Deployment  
+│   ├── service.yaml    # Kubernetes Service  
+│   └── ingress.yaml    # Ingress with TLS configuration  
+└── .github/  
+    └── workflows/  
         └── ci-cd.yaml  # GitHub Actions CI/CD pipeline
+
 
 ---
 
