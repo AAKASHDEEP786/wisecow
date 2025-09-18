@@ -20,7 +20,7 @@ As a challenge goal, the application is also secured with **TLS** using Kubernet
     └── workflows/  
         └── ci-cd.yaml  # GitHub Actions CI/CD pipeline
 
-
+```
 ---
 
 ## ⚙️ Prerequisites
