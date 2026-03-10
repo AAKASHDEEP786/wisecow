@@ -9,7 +9,6 @@ jobs:
 build:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout code
     uses: actions/checkout@v3
@@ -32,4 +31,3 @@ steps:
 
   - name: Push Docker image
     run: docker push 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
-```
