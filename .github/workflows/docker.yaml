@@ -1,22 +1,38 @@
-name: Build and Push Docker Image
+name: Build and Push to ECR
 
 on:
-  push:
-    branches: [ main ]
+push:
+branches:
+- main
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+build:
+runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+```
+steps:
+  - name: Checkout Code
+    uses: actions/checkout@v3
 
-    - name: Login to DockerHub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+  - name: Configure AWS Credentials
+    uses: aws-actions/configure-aws-credentials@v4
+    with:
+      aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+      aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+      aws-region: us-east-1
 
-    - name: Build image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/wisecow .
+  - name: Login to Amazon ECR
+    uses: aws-actions/amazon-ecr-login@v2
 
-    - name: Push image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/wisecow
+  - name: Build Docker Image
+    run: |
+      docker build -t wisecow .
+
+  - name: Tag Image
+    run: |
+      docker tag wisecow:latest 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
+
+  - name: Push Image to ECR
+    run: |
+      docker push 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
+```
