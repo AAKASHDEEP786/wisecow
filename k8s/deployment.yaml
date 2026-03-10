@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: wisecow
-        image: aakashdevops/wisecow:latest
+        image: 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
         ports:
         - containerPort: 4499
