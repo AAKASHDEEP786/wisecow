@@ -9,7 +9,6 @@ jobs:
 build:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout Code
     uses: actions/checkout@v3
@@ -28,11 +27,10 @@ steps:
     run: |
       docker build -t wisecow .
 
-  - name: Tag Image
+  - name: Tag Docker Image
     run: |
       docker tag wisecow:latest 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
 
   - name: Push Image to ECR
     run: |
       docker push 845989089095.dkr.ecr.us-east-1.amazonaws.com/wisecow:latest
-```
